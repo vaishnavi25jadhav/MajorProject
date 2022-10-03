@@ -1,0 +1,43 @@
+<app-adminnav></app-adminnav>
+<div class='content-wrapper p-2'>
+<div class="container-fluid" style="min-height:80vh">
+    <div class="card shadow mt-2">
+        <div class="card-body">
+            <h5 class="p-2" style="border-bottom: 2px solid green;">Bookings</h5>            
+            <table class="table table-bordered table-sm">
+                <thead>
+                    <tr>
+                        <th>Booking Id</th>
+                        <th>Car Name</th>
+                        <th>Booking Date</th>                    
+                        <th>User Name</th>
+                        <th>Advance</th>
+                        <th>Price</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr *ngFor="let item of bookings">
+                            <td>{{item.bookingId}}</td>
+                            <td>{{item.variant?.name}}</td>
+                            <td>{{item.createdOn | date}}</td>
+                            <td>{{item.customer?.name}}</td>
+                            <td>Rs.{{item.advance}}</td>
+                            <td>Rs.{{item.variant?.price}}/day</td>
+                            <td>{{item.fromDate |date}}</td>
+                            <td>{{item.toDate | date}}</td>
+                            <td>{{item.status}}</td>
+                            <td>                                
+                                <button *ngIf="item.status=='Pending'" (click)="updateStatus('Cancelled',item.bookingId)" class="btn btn-outline-danger btn-sm">Cancel</button>
+                                <button *ngIf="item.status=='Pending'" (click)="updateStatus('Confirmed',item.bookingId)" class="btn btn-success btn-sm ml-2">Confirm</button>                                
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>

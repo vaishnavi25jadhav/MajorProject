@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>CarRental_Backend</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20220923083729_initialmigration.cs" />
+    <Compile Remove="Migrations\20220923083729_initialmigration.Designer.cs" />
+    <Compile Remove="Migrations\20220923083745_initialmigration.cs" />
+    <Compile Remove="Migrations\20220923083745_initialmigration.Designer.cs" />
+    <Compile Remove="Migrations\20220923083858_initialmigration.cs" />
+    <Compile Remove="Migrations\20220923083858_initialmigration.Designer.cs" />
+    <Compile Remove="Migrations\20220923084206_initialmigration.cs" />
+    <Compile Remove="Migrations\20220923084206_initialmigration.Designer.cs" />
+    <Compile Remove="Migrations\20220923084519_initialmigration.cs" />
+    <Compile Remove="Migrations\20220923084519_initialmigration.Designer.cs" />
+    <Compile Remove="Migrations\20220923084622_initialmigration.cs" />
+    <Compile Remove="Migrations\20220923084622_initialmigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Photos\" />
+  </ItemGroup>
+
+
+</Project>

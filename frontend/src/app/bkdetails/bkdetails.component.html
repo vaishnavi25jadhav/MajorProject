@@ -1,0 +1,128 @@
+<app-usernav></app-usernav>
+<div class='container-fluid' style="min-height: '80vh'">
+    <h5 class='p-2 mb-2' style="border-bottom: '2px solid green'">
+      Booking Details
+    </h5>
+    <div class='form-row'>
+      <div class='col-sm-5'>
+        <div class='card shadow'>
+          <div class='card-body'>
+            <img
+              src="{{baseUrl + data?.variant?.photo}}"
+              style="height: '250px'"
+              class='mx-auto d-block img-thumbnail'
+            />
+            <table class='table table-sm'>
+              <tbody>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>{{data?.bookingId}}</th>
+                </tr>
+                <tr>
+                  <th>From Date</th>
+                  <th>{{data?.fromDate}}</th>
+                </tr>
+                <tr>
+                  <th>To Date</th>
+                  <th>{{data?.toDate}}</th>
+                </tr>
+                <tr>
+                  <th>Car Variant</th>
+                  <th>{{data?.variant?.name}}</th>
+                </tr>
+                <tr>
+                  <th>Price per Day</th>
+                  <th>₹ {{data?.variant?.price}} / day</th>
+                </tr>
+                <tr>
+                  <th>Bill Amount</th>
+                  <th>₹ {{data?.billAmount}}</th>
+                </tr>
+                <tr>
+                  <th>Advance Paid </th>
+                  <th>₹ {{data?.advance}}</th>
+                </tr>
+                <tr>
+                  <th>Status</th>
+                  <th>{{data?.status}}</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class='col-sm-6'>
+        <div class='card shadow'>
+          <div class='card-body'>
+            <div class='form-row'>
+              <div class='col-sm-6' *ngIf="data?.status!= 'Closed'">
+                <div class='card shadow'>
+                    <div class='card-body'>
+                      <h5 class='text-center'>
+                        Final Payment
+                      </h5>
+                      <form [formGroup]="myform" (submit)="paynow(myform.value)">
+                        <div class='form-group'>
+                          <label>Balance Amount *</label>
+                          <input
+                            type='text'
+                            name='amount'
+                            formControlName="amount"
+                            readonly
+                            value={{balance}}
+                            class='form-control form-control-sm'
+                          />
+                        </div>
+                        <div class='form-group'>
+                          <label>Card No *</label>
+                          <input
+                            type='text'
+                            name='cardno'
+                            formControlName="cardno"
+                            maxlength="16"
+                            minlength="16"                            
+                            class='form-control form-control-sm'
+                          />
+                        </div>
+                        <div class='form-group'>
+                          <label>Name on card *</label>
+                          <input
+                            type='text'
+                            name='nameoncard'      
+                            formControlName="nameoncard"                      
+                            class='form-control form-control-sm'
+                          />
+                        </div>
+                        <input
+                          type='submit'
+                          value='Make Payment'
+                          class='btn btn-success btn-sm float-right'
+                        />
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                  <div
+                    class='card shadow col-sm-6'                    
+                  >
+                    <div class='card-body p-2'>
+                      <h5
+                        class='text-center p-2'
+                        style="border-bottom: '2px solid green'"
+                      >
+                        Payment History
+                      </h5>
+                      
+                        <div class='card shadow p-2 mb-2' *ngFor="let item of payments">
+                          <p class='p-1 m-0'>Date : {{item.pmtDate | date}}</p>
+                          <p class='m-0'>Amount : ₹ {{item.amount}}</p>                          
+                        </div>                      
+                    </div>
+                  </div>
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

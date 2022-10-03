@@ -1,0 +1,30 @@
+<app-adminnav></app-adminnav>
+<div class='content-wrapper p-2'>
+    <div
+      class='container-fluid shadow p-2 bg-white'
+      style="min-height: '88vh'">
+      <h4 class='p-2 mb-2 border-bottom border-success'>
+        Customers List
+      </h4>
+      <table class='table table-bordered table-sm'>
+        <thead class='table-light'>
+          <tr>
+            <th>User Id</th>
+            <th>Customer name</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>          
+            <tr *ngFor="let item of customers">
+              <td>{{item.userid}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.gender}}</td>
+              <td>{{item.city}}</td>
+              <td>{{item.phone}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

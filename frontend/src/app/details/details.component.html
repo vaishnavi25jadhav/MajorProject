@@ -1,0 +1,102 @@
+<app-usernav></app-usernav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="card m-2">
+                <div class="card-header text-center">
+                    {{product?.name}} ({{product?.company?.name}})
+                </div>
+                <img style="height:380px;" src="{{base_URL+product?.photo}}" class="card-top-img img-thumbnail">
+                <div class="card-footer">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Car Name</th>
+                                <th>{{product?.name}}</th>
+                            </tr>
+                            <tr>
+                                <th>Price per day</th>
+                                <th>&#8377; {{product?.price}}/day</th>                                
+                            </tr>                                                         
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6" *ngIf="isloggedIn">            
+                <h4 class="p-2" style="border-bottom: 2px solid green;">Book Now                 
+                </h4>
+                <form [formGroup]="fg" (submit)="booknow(fg.value)">
+                    <div class="card shadow mb-2">
+                        <div class="card-body">
+                            <h5 style="border-bottom: 2px solid green;">Booking Details</h5>
+                            <div class="form-row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>From Date</label>
+                                        <input type="date" id="fromdate" name="fromdate" formControlName="fromdate" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>To Date</label>
+                                        <input type="date" id="todate" name="todate" formControlName="todate" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Price</label>
+                                        <input type="text" required id="totalamount" readonly name="billamount" value="{{totalamount}}" class="form-control">
+                                    </div>
+                                </div>                                
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Message (Optional)</label>
+                                        <input type="text" formControlName="message" required name="message" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Booking Money</label>
+                                        <input type="number" formControlName="advance" id="advance" min="1" required name="advance" max="{{totalamount}}" placeholder="Advance Amount" value="" class="form-control">
+                                    </div>
+                                </div>                                                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-2">
+                        <div class="card-body">
+                            <h5 style="border-bottom: 2px solid green;">Payment Details</h5>
+                            <div class="form-row">
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label>Card Number</label>
+                                        <input type="text" required name="cardno" formControlName="cardno" pattern="[0-9]{16,16}" maxlength="16" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label>Name on Card</label>
+                                        <input type="text" required name="nameoncard" formControlName="nameoncard" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label>CVV</label>
+                                        <input type="text" required maxlength="3" pattern="[0-9]{3,3}" class="form-control">
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" value="Book Now" class="btn btn-primary">                                        
+                </form>               
+        </div>
+        <div class="col-sm-6" *ngIf="!isloggedIn">
+            <h5 class="p-2 mt-4">Please <a [routerLink]="['/login']">login</a> or <a [routerLink]="['/register']">register</a> to book car</h5>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

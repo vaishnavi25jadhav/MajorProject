@@ -1,0 +1,30 @@
+<app-adminnav></app-adminnav>
+<div class='content-wrapper p-2'>
+<div class="container-fluid" style="min-height:88vh;">
+    <div class="card shadow mt-2">
+        <div class="card-body">
+    <h4 class="p-2" style="border-bottom: 2px solid green;">Payment Reports</h4>
+    <table class="table table-bordered table-sm">
+        <thead>
+            <tr>
+                <th>Payment ID</th>
+                <th>Payment Date</th>
+                <th>Booking Id</th>
+                <th>Customer Name</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of payments">
+                <td>{{item.paymentId}}</td>
+                <td>{{item.pmtDate | date}}</td>
+                <td>{{item.booking.bookingId}}</td>
+                <td>{{item.booking.userId}}</td>
+                <td>&#8377; {{item.amount}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>

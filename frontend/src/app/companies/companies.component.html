@@ -1,0 +1,46 @@
+<app-adminnav></app-adminnav>
+<div class='content-wrapper p-2'>
+    <div
+      class='container-fluid shadow p-2 bg-white'
+      style="min-height: '88vh'">
+      <h4 class='p-2 mb-3 border-bottom border-success'>Companies</h4>
+      <div class='row'>
+        <div class='col-sm-8'>
+          <table class='table table-bordered table-sm'>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of companies">
+                <td>{{item.companyId}}</td>
+                <td>{{item.name}}</td>
+                <td><button (click)="deleteCompany(item.companyId)" class="btn btn-danger btn-sm">Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class='col-sm-4'>
+          <form  [formGroup]="fg" (submit)="saveCompany(fg.value)" >
+            <div class='form-group'>
+              <label>Company Name</label>
+              <input
+                type='text'                
+                class='form-control'
+                name='name'
+                formControlName="name"
+              />
+            </div>
+            <input
+              type='submit'              
+              class='btn btn-primary btn-sm'
+              value='Save Company'
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

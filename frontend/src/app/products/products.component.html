@@ -1,0 +1,55 @@
+<app-usernav></app-usernav>
+    <div
+      class='container-fluid shadow p-2 bg-white'
+      style="min-height: '88vh'">
+        <div class='row'>
+          <div class='col-sm-2 p-0'>
+            <h5 class='p-2 text-center'>Companies</h5>
+            <div class='list-group'>
+              <a [routerLink]="['/products']"
+                class="list-group-item list-group-item-action"
+              >
+                All Companies
+              </a>              
+                <a *ngFor="let cmp of companies"
+                [routerLink]="['/products',cmp.companyId]"
+                  class="list-group-item list-group-item-action"
+                >
+                  {{cmp.name}}
+                </a>
+            </div>
+          </div>
+          <div class='col-sm-10 p-0'>
+            <div class='card shadow'>
+              <div class='card-body p-1'>
+                <div class='container-fluid py-2'>
+                  <div class='row m-2'>                    
+                        <div *ngFor="let item of variants" class='col-md-4'>
+                          <div class='card shadow mt-2'>
+                            <a [routerLink]="['/details/',item.variantId]">
+                              <img
+                                style="height:200px"
+                                src="{{BASE_URL + item.photo}}"
+                                class='card-top-img img-thumbnail mx-auto d-block p-2'
+                              />
+                            </a>
+                            <div class='card-footer bg-dark text-white font-weight-bold p-2'>
+                              <div class='form-row'>
+                                <div class='col-sm-7'>
+                                  {{item.name}}
+                                </div>
+                                <div class='col-sm-5 text-right'>
+                                  ₹ {{item.price}}/day
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>                      
+                    <div class='clearfix'> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
